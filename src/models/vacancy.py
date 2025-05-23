@@ -98,7 +98,10 @@ class Vacancy:
         for vacancy in vacancies:
             title = vacancy.get("name", "")
             url = vacancy.get("alternate_url", "")
-            salary = vacancy.get("salary", {}).get("from") or vacancy.get("salary", {}).get("to") or None
+            if vacancy.get("salary"):
+                salary = vacancy.get("salary", {}).get("from") or vacancy.get("salary", {}).get("to") or None
+            else:
+                salary = None
             salary_str = f"{salary} руб." if salary else None
             description = vacancy.get("snippet", {}).get("requirement", "Описание не указано")
             try:
