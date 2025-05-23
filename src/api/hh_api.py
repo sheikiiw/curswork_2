@@ -15,7 +15,7 @@ class HeadHunterAPI(AbstractAPI):
     def _connect(self) -> None:
         """Подключение к API hh.ru и проверка доступности"""
         try:
-            response = requests.get(self.__base_url)
+            response = requests.get(self.__vacancies_url)
             if response.status_code != 200:
                 raise ConnectionError(f"Ошибка подключения к API: {response.status_code}")
         except requests.RequestException as e:
